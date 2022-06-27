@@ -1,0 +1,58 @@
+<%- include('../partials/header.ejs')%>
+        <section id="main">
+            <div class="container">
+                <article id="main-col">
+                    <div>
+                        <img src="<%=item.img%>" alt="<%=item.title%>">
+                    </div>
+                    
+                    <h1>Posted by <%= item.owner.firstName +' '+ item.owner.lastName %></h1>
+                    <h2><%= item.title%></h2>
+                    <br><br><br><br><br>
+                    <h4>Details: </h4>
+                    <p><%= item.details%></p>
+                    <br><br>
+                    <h4>Weight: </h4>
+                    <p><%= item.weight%></p>
+                    <br><br>
+                    <h4>Color: </h4>
+                    <p><%=item.color%></p>
+
+                    <% if(user == item.owner._id) { %>
+                    <form>
+                        <br><br>
+                        <button class="button_1" type="submit" formmethod="GET" formaction="/trades/<%= item.id%>/edit">Edit</button>
+                        <button class="button_red" type="submit" formmethod="POST" formaction="/trades/<%= item.id%>?_method=DELETE">Delete</button>
+                    </form>
+                    <% } %>
+
+                </article>
+
+                <% if(user != item.owner._id) { %>
+                
+                <aside id="sidebar">
+                    <div class="dark">
+                        <%if(item.status == 'Traded'){%>
+                            <h3>This item is already traded</h3>
+                        <form>  
+                            <button disabled class="button_1" type="submit" >Traded</button>
+                        </form>
+                        <%}else{%>
+                            <h3>Are you interested in this item?</h3>
+                            <form>
+                                <button enabled class="button_1" type="submit" formmethod="POST" formaction="/trades/<%= item.id%>/tradeIt?_method=PUT">Trade it</button>
+                            <%if(item.watchListBy.includes(user)){%>
+                                <button enabled class="button_1" type="submit" formmethod="POST" formaction="/trades/<%= item.id%>/Unwatch?_method=PUT">Unwatch</button>
+                            <%} else{%>
+                                <button enabled class="button_1" type="submit" formmethod="POST" formaction="/trades/<%= item.id%>/Watch?_method=PUT">Watch</button>
+                            <%}%>      
+                        <%}%>                                                                         
+                            </form>
+                    </div>
+                </aside>
+
+                <% } %>
+            </div>
+        </section>
+        
+<%- include('../partials/footer.ejs')%>

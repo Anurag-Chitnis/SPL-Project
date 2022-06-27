@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content="Project1" />
+  <meta name="keywords" content="trading" />
+  <meta name="author" content="Ankita Marathe" />
+  <title>Sale Merchant | Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <a href="/"><span class="highlight">Sale Merchant</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <% if(!user){ %>
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/new">Signup</a></li>
+          <% } else { %>
+          <li><a href="/users/profile">Welcome <%= firstName %></a></li>
+          <li><a href="/trades/newTrade">Start Trading</a></li>
+          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/trades">Trades</a></li>
+          <% } %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <% if(errorMessages.length> 0) {%> <% errorMessages.forEach(message=>{%>
+  <div class="error"><%=message%></div>
+  <%});%> <%}%> <% if(successMessages.length> 0) {%> <%
+  successMessages.forEach(message=>{%>
+  <div class="success"><%=message%></div>
+  <%});%> <%}%>
+</body>

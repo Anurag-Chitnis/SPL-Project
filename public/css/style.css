@@ -1,0 +1,303 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+}
+
+/* Global */
+.container {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+a:hover {
+  color: #cccccc;
+  font-weight: bold;
+}
+
+.button_1 {
+  height: 38px;
+  background: #20b2aa;
+  border: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #ffffff;
+}
+
+.button_red {
+  height: 38px;
+  background: rgba(186, 29, 12, 0.7);
+  border: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #ffffff;
+}
+
+.dark {
+  padding: 25px;
+  background: #000000;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Header */
+header {
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 70px;
+  border-bottom: #20b2aa 3px solid;
+}
+
+header #branding a {
+  float: left;
+  margin-top: 5px;
+  font-size: 30px;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header li {
+  display: flex;
+  padding: 10px 20px;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight,
+header .current a {
+  color: #20b2aa;
+  font-weight: bold;
+}
+
+#trades {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+article#main-col a {
+  color: #000000;
+  margin: 10px;
+  padding: 10px;
+}
+
+article#main-col p,
+h4 {
+  display: inline;
+  font-size: 110%;
+}
+
+#introduction {
+  min-height: 60vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* New Trade Form */
+
+#createTrade input[type="text"],
+[type="email"],
+[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+#createTrade input[type="submit"] {
+  background-color: #20b2aa;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px 20px;
+}
+
+#createTrade input[type="submit"]:hover {
+  background-color: #20b2aa;
+}
+
+.newTradeForm {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+aside#sidebar {
+  float: right;
+  width: 30%;
+  margin-top: 10px;
+}
+
+aside#sidebar .quote input,
+aside#sidebar .quote textarea {
+  width: 90%;
+  padding: 5px;
+}
+
+/* Main-col */
+article#main-col {
+  float: left;
+  width: 65%;
+}
+
+article#main-col img {
+  margin: 20px;
+  min-width: 200px;
+  height: 170px;
+  float: left;
+}
+
+article#main-col li {
+  text-align: justify;
+  padding-bottom: 22px;
+}
+
+td,
+th {
+  text-align: left;
+}
+.wrapper {
+  overflow-x: scroll;
+}
+
+.center {
+  content: "";
+  clear: both;
+  display: table;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+th,
+td {
+  padding: 1px;
+}
+
+.form {
+  float: left;
+  padding-left: 5px;
+}
+
+.errorContent {
+  padding-top: 200px;
+  text-align: center;
+}
+
+.success {
+  background: rgba(82, 218, 88, 0.7);
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.error {
+  background: rgba(186, 29, 12, 0.7);
+  color: #fff;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+/* Footer */
+
+footer {
+  color: #ffffff;
+  background-color: #20b2aa;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa {
+  display: inline;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:not(:last-child) {
+  margin-right: 10px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #20b2aa;
+  color: white;
+}
+
+.fa-twitter {
+  background: #20b2aa;
+  color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  header #branding,
+  header nav,
+  header nav li,
+  article#main-col,
+  aside#sidebar {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  header {
+    padding-bottom: 20px;
+  }
+}

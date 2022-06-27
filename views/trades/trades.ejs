@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%>
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <h1>Categories</h1>
+                <div class="container">
+                    <% if(categories.length){ %>
+                        <% categories.forEach(category=> { %>
+                            <div>
+                                <h3>
+                                    <%= category %>
+                                </h3>
+                                <ol>
+                                    <% if(items.length){ %>
+                                        <% items.forEach(item=> {
+                                            if (item.category === category) { %>
+                                            <li><a href="/trades/<%= item.id %>">
+                                                    <%= item.title %>
+                                                </a></li>
+                                            <% } }); } else { %>
+                                                <p>There are no items to display.</p>
+                                                <% } %>
+                                </ol>
+                            </div>
+                            <% }); %>
+                                <% } else { %>
+                                    <p>There are no categories to display.</p>
+                                    <% } %>
+                </div>
+               
+            </article>
+            <aside id="sidebar">
+                <div>
+                    <img src="/img/trades.jpeg" alt="trades">
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <%- include('../partials/footer.ejs')%>

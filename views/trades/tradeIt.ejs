@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs')%>
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <h1>Your Items</h1>
+                <div class="container">                   
+                    <% if(itemData.length){ %>
+
+                        <form>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">SELECT</th>
+                                        <th scope="col">TITLE</th>
+                                        <th scope="col">CATEGORY</th>
+                                        <th scope="col">STATUS</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <% itemData.forEach(singleItem=> { %>
+                                       
+                                        <%if(singleItem.status != 'Traded'){%>
+                                            <tr>
+                                                <td><input type="radio" id='regular' value="<%=singleItem.id %>" name="optradio"></td>
+                                                <td><a href="/trades/<%= singleItem.id %>"><%= singleItem.title %></a></td>
+                                                <td><%= singleItem.category %></td>
+                                                <td><%= singleItem.status %></td>
+                                                <td><button class="button_1" type="submit" formmethod="POST" formaction="/trades/<%= singleItem.id%>,<%=selectedTradeItem.id%>/selectedTrade?_method=PUT">Trade It</button></td>
+                                            </tr>
+                                        <%}%>                   
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                            
+                        </form>
+                    
+                    <% } else { %>
+                        <p>There are no items to display.</p>
+                    <% } %>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <%- include('../partials/footer.ejs')%>

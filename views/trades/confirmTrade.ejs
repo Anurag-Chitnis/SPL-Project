@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs')%>
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <h1>Your Trade</h1>              
+                <div class="container" style="overflow-x: auto;">                   
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Trade Item</th>                            
+                            <th scope="col">My Item</th>                          
+                          </tr>
+                        </thead>                    
+                        <tbody>                               
+                          <tr>
+                                <td><a href="/trades/<%= tradeitem.id %>"><%= tradeitem.title %></a></td>
+                                <td><%= myItem.title %></td>                              
+                            </tr>    
+                            <tr>
+                                <td><img src="<%=tradeitem.img%>" alt="<%=tradeitem.title%>"></td>
+                                <td><img src="<%=myItem.img%>" alt="<%=myItem.title%>"></td>
+                            </tr>                            
+                        </tbody>
+                      </table> 
+                   <div class="center">
+                    <%if(myItem.trade.tradeStatus == 'Stage 1'){%>
+                        <form class="form">
+                            <button class="button_1" type="submit" formmethod="POST" formaction="/trades/<%= tradeitem.id%>,<%= myItem.id%>/acceptOffer?_method=PUT">Accept Offer</button>
+                            <button class="button_red" type="submit" formmethod="POST" formaction="/trades/<%= tradeitem.id%>/cancelOffer?_method=PUT">Cancel Offer</button>
+                        </form>
+                    <%}else{%>
+                        <form class="form">
+                            <button class="button_red" type="submit" formmethod="POST" formaction="/trades/<%= tradeitem.id%>/cancelOffer?_method=PUT">Cancel Offer</button>
+                        </form>
+                    <%}%>    
+                   </div>                                      
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <%- include('../partials/footer.ejs')%>
