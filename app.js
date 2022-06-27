@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 
 // Connect to database
 mongoose
-  .connect("mongodb://localhost:27017/fit_trade", {
+  .connect("mongodb://localhost:27017/trade_merchant", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -41,7 +41,7 @@ app.use(
     secret: "tjhgjhgjg67866vvhgh",
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongoUrl: "mongodb://localhost:27017/fit_trade" }),
+    store: new MongoStore({ mongoUrl: "mongodb://localhost:27017/trade_merchant" }),
     cookie: { maxAge: 60 * 60 * 1000 },
   })
 );
