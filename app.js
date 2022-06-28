@@ -1,3 +1,8 @@
+// Group 4
+// Members:
+// Anurag Chitnis - 801254404
+// Ankita Marathe - 801208531
+
 // require modules
 const express = require("express");
 const morgan = require("morgan");
@@ -15,13 +20,13 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 
 // configure application
-let port = 3000;
+let port = 3500;
 let host = "localhost";
 app.set("view engine", "ejs");
 
 // Connect to database
 mongoose
-  .connect("mongodb://localhost:27017/fit_trade", {
+  .connect("mongodb://localhost:27017/trade_merch", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -38,10 +43,12 @@ mongoose
 
 app.use(
   session({
-    secret: "tjhgjhgjg67866vvhgh",
+    secret: "hdjjgjhgjg67866vvhgh",
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongoUrl: "mongodb://localhost:27017/fit_trade" }),
+    store: new MongoStore({
+      mongoUrl: "mongodb://localhost:27017/trade_merch",
+    }),
     cookie: { maxAge: 60 * 60 * 1000 },
   })
 );

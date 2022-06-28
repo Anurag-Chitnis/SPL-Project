@@ -53,6 +53,6 @@ exports.validateItem = [
   body("category", "Category is required").notEmpty().trim().escape(),
   body("title", "Title is required").notEmpty().trim().escape(),
   body("details", "Details are required").notEmpty().trim().escape(),
-  body("weight", "Weight is required").notEmpty().trim().escape(),
+  body("brand", "Brand is required").notEmpty().trim().escape(),
   body("color", "Color is required").notEmpty().trim().escape(),
 ];

@@ -5,13 +5,11 @@ const itemSchema = new Schema(
   {
     category: { type: String, required: [true, "Category is required"] },
     title: { type: String, required: [true, "Title is required"] },
+    brand: { type: String, required: [true, "Brand is required"] },
     owner: { type: Schema.Types.ObjectId, ref: "User" },
     details: { type: String, required: [true, "Details are required"] },
-    weight: { type: String, required: [true, "Weight is required"] },
     color: { type: String, required: [true, "Color is required"] },
     img: { type: String, required: [true, "Image path is required"] },
-    watchlist: { type: String, default: "Watch it" },
-    watchListBy: { type: Array, default: [] },
     tradeListBy: { type: String, default: "-" },
     status: { type: String, default: "Available" },
     trade: {

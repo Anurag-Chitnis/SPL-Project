@@ -1,8 +1,8 @@
 const model = require("../models/user");
 const Item = require("../models/item");
 
-exports.new = (req, res) => {
-  res.render("./user/new");
+exports.register = (req, res) => {
+  res.render("./user/register");
 };
 
 exports.create = (req, res, next) => {
@@ -18,12 +18,12 @@ exports.create = (req, res, next) => {
     .catch((err) => {
       if (err.name === "ValidationError") {
         req.flash("error", err.message);
-        return res.redirect("/users/new");
+        return res.redirect("/users/register");
       }
 
       if (err.code === 11000) {
         req.flash("error", "Email has been used");
-        return res.redirect("/users/new");
+        return res.redirect("/users/register");
       }
 
       next(err);
@@ -67,26 +67,18 @@ exports.profile = (req, res, next) => {
   let id = req.session.user;
   Promise.all([model.findById(id), Item.find({ owner: id })])
     .then((results) => {
-      const watchListItems = Item.find({ watchlist: "Unwatch" })
-        .then((response) => {
+      const tradeListItems = Item.find({
+        tradeListBy: id,
+        status: "Offer Pending",
+      })
+        .then((r) => {
           const [user, items] = results;
-          console.log("watchListItems", response);
-
-          const tradeListItems = Item.find({
-            tradeListBy: id,
-            status: "Offer Pending",
-          })
-            .then((r) => {
-              console.log("tradeListItems", r);
-
-              res.render("./user/profile", {
-                user,
-                items,
-                watchListItems: response,
-                tradeListItems: r,
-              });
-            })
-            .catch((err) => next(err));
+          console.log("tradeListItems", r);
+          res.render("./user/profile", {
+            user,
+            items,
+            tradeListItems: r,
+          });
         })
         .catch((err) => next(err));
     })
